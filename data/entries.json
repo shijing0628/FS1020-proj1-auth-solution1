@@ -1,0 +1,16 @@
+[
+  {
+    "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "name": "some string",
+    "email": "address@email.com",
+    "phoneNumber": "2343331234",
+    "content": "User's message goes here"
+  },
+  {
+    "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "name": "another one",
+    "email": "msn@email.com",
+    "phoneNumber": "4",
+    "content": "Another message"
+  }
+]
