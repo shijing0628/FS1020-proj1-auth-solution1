@@ -8,6 +8,7 @@ once get auth, we will see the whole data and speicfic data
 ![](2020-11-04-13-52-49.png)
 
 ![](2020-11-04-13-53-30.png)
+![](2020-11-04-14-26-24.png)
 
 POST /users and get /user
 ![](2020-11-04-13-56-27.png)
