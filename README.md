@@ -1,4 +1,4 @@
-npm start
+npm start port:5000
 
 POST /contact_form/entries
 once get auth, we will see the whole data and speicfic data
