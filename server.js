@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-let usersData = require('./data/users.json');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -13,7 +12,7 @@ app.use(express.json());
 
 //import routes
 const userRoute = require('./routes/user');
-const entriesRoute = require('./routes/post');
+const entriesRoute = require('./routes/contact-form');
 const authRoute = require('./routes/auth');
 
 

@@ -3,11 +3,15 @@ const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 const { check, validationResult } = require('express-validator');
 
+
 router.get('/', async (req, res) => {
- const userData = await fs.readFile('./data/users.json', (err, data) => {
-  if (err) throw err;
-  let users = JSON.parse(data);
-  res.status(200).json({ users })
+ await fs.readFile('./data/users.json', (err, data) => {
+  if (err) { throw new Error('Something wrong when reading file'); }
+  else {
+   let users = JSON.parse(data);
+   res.status(200).json({ users })
+  }
+
  });
 })
 
@@ -15,37 +19,50 @@ router.get('/', async (req, res) => {
 router.post('/',
  [check('name').isLength({ min: 6 }).withMessage('UserName Must be at least 6 chars long'), check('password').isLength({ min: 8 }).withMessage('Password Must be at least 8 chars long'),
  check('email').isEmail().withMessage('Must be a valid email address!'),],
- (req, res) => {
+ async (req, res) => {
+  const myValidationResult = validationResult.withDefaults({
+   formatter: (error) => {
+    return {
+     message: "validation error",
+     invalid: error.msg,
+    };
+   }
+  });
+  const errors = myValidationResult(req);
 
-  const errors = validationResult(req);
   if (!errors.isEmpty()) {
-   return res.status(422).json({ errors: errors.array() })
+   return res.status(422).json({ errors: errors.array() });
   }
-  let userArr = {};
-  usersArr = fs.readFileSync('./data/users.json', (err, d) => {
-   if (err) throw err;
-   return { ...JSON.parse(d) };
-  })
-  const { name, email, password } = req.body;
 
-  let user = {
+  const { name, email, password } = req.body;
+  let userRegister = {
    id: uuidv4(),
    name: name,
    email: email,
    password: password
   };
 
+  fs.readFile('./data/users.json', 'utf8', await function (err, data) {
+   if (err) {
+    throw new Error("cannot read user file correctly.")
+   } else {
+    obj = JSON.parse(data);
+    const check = obj.find(item => item.email === req.body.email);
+    if (!check) {
+     obj.push(userRegister);
+     let json = JSON.stringify(obj);
 
-  var data = JSON.stringify(user, null, 2);
-  fs.appendFile('./data/users.json', data, 'utf8', (err) => {
-   if (err) throw err;
-   console.log('Data written to file');
-  });
-
-  let appendData = res.status(200).json({ data });
-  usersArr.push(appendData);
-
-  console.log("JSON file has been saved.");
+     fs.writeFile('./data/users.json', json, 'utf-8', function (err, data) {
+      if (err) return res.status(400).json({ err });
+      res.status(200).json({ data })
+     })
+    } else {
+     return res.status(400).json("This email has already registered!");
+    }
+   }
+  })
  });
 
+
 module.exports = router;
+

@@ -1,6 +1,20 @@
-{
-  "id": "63a09693-05de-4811-9819-a3092391ff7f",
-  "name": "adminNamesfsf",
-  "email": "address@email.com",
-  "password": "password123"
-}
+[
+  {
+    "id": "63a09693-05de-4811-9819-a3092391ff7f",
+    "name": "adminNamesfsf",
+    "email": "address@email.com",
+    "password": "password123"
+  },
+  {
+    "id": "6756c079-61ff-490c-8c3a-638958aad9c9",
+    "name": "oscar liu",
+    "email": "address@456.com",
+    "password": "12345678"
+  },
+  {
+    "id": "4fd143c9-6cef-4c0e-9a3d-0063525e99c9",
+    "name": "Susan Smith",
+    "email": "susan@gmail.com",
+    "password": "12345678"
+  }
+]

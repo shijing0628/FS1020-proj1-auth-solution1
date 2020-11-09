@@ -9,10 +9,16 @@ module.exports = function (req, res, next) {
    const bearer = bearerHeader.split(" ");
    const bearerToken = bearer[1];
    //req.token = bearerToken;
-   const verified = jwt.verify(bearerToken, process.env.TOKEN_SECRET);
-   console.log(verified);
-   req.user = verified;
-   next();
+   jwt.verify(bearerToken, process.env.TOKEN_SECRET, (err, decoded) => {
+    if (err) {
+     res.status(401).json({ message: "Access denied!" });
+     return;
+    } else {
+     req.id = decoded.id;
+     next();
+    }
+   });
+
   }
  }
  catch (err) {

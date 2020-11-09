@@ -3,19 +3,24 @@ npm start port:5000
 POST /contact_form/entries
 once get auth, we will see the whole data and speicfic data
 
-![](2020-11-04-13-52-16.png)
+user.js file = register feature
+auth.js file = login feature
+post.js file = contact form data post or get
 
-![](2020-11-04-13-52-49.png)
-
-![](2020-11-04-13-53-30.png)
-![](2020-11-04-14-26-24.png)
+POST & get /contact_form/entries
+![](2020-11-09-15-06-28.png)
+![](2020-11-09-15-07-15.png)
 
 POST /users and get /user
-![](2020-11-04-13-56-27.png)
-
-![](2020-11-04-13-57-57.png)
-
+![](2020-11-09-15-09-47.png)
+![](2020-11-09-15-10-03.png)
 POST /auth
-![](2020-11-04-13-54-19.png)
+![](2020-11-09-15-48-20.png)
+![](2020-11-09-15-48-54.png)
+![](2020-11-09-15-49-24.png)
+![](2020-11-09-15-52-42.png)
+![](2020-11-09-15-53-04.png)
 
-![](2020-11-04-13-55-10.png)
+instruction steps :
+
+### https://gitlab.com/shijing0628/course-project
